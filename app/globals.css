@@ -505,7 +505,6 @@ body {
     padding: 1rem 1rem 4rem 1rem;
   }
   .tool-card {
-    min-height: auto;
     transform: none !important;
   }
 }
