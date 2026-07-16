@@ -1,0 +1,511 @@
+/* CSS Design System for Tool Shed ("Workshop Pegboard" Aesthetic) */
+
+/* Import Google Fonts for characterful typography */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --bg-navy: #0b132b;
+  --bg-pegboard: #0c1524;
+  --peg-dot: rgba(255, 255, 255, 0.08);
+  --amber: #f59e0b;
+  --amber-hover: #d97706;
+  --teal: #14b8a6;
+  --teal-hover: #0d9488;
+  --card-bg: #faf8f5;
+  --card-text: #1c1d21;
+  --card-text-muted: #535661;
+  --card-border: #e8e5e0;
+  
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, monospace;
+}
+
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-navy);
+  color: #f8fafc;
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* Pegboard Background Grid (subtle dot grid) */
+.pegboard-hero {
+  position: relative;
+  background-color: var(--bg-pegboard);
+  background-image: radial-gradient(var(--peg-dot) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  background-position: center top;
+  border-bottom: 2px dashed rgba(255, 255, 255, 0.08);
+  padding: 4.5rem 1.5rem;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Typography styles */
+.serif-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+}
+
+.mono-text {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+/* Button & Links */
+.btn-primary {
+  font-family: var(--font-mono);
+  background-color: var(--amber);
+  color: var(--bg-navy);
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.btn-primary:hover {
+  background-color: var(--amber-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-primary:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.btn-secondary {
+  font-family: var(--font-mono);
+  background-color: transparent;
+  color: #cbd5e1;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 2px;
+}
+
+/* Category Filter Tabs */
+.filter-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2.5rem 0;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  font-family: var(--font-mono);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #f8fafc;
+}
+
+.tab-btn.active {
+  background-color: var(--teal);
+  border-color: var(--teal);
+  color: var(--bg-navy);
+  font-weight: 700;
+  box-shadow: 0 0 12px rgba(20, 184, 166, 0.3);
+}
+
+/* Tool Grid Section */
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2.5rem 2rem;
+  padding: 1rem 1.5rem 5rem 1.5rem;
+}
+
+/* Pinned Index Card Style */
+.tool-card {
+  position: relative;
+  background-color: var(--card-bg);
+  color: var(--card-text);
+  border-radius: 2px;
+  padding: 1.5rem;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 400px;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
+}
+
+/* Alternating rotations for analog, pegboard feel */
+.tool-card:nth-child(4n) {
+  transform: rotate(-1deg);
+}
+.tool-card:nth-child(4n+1) {
+  transform: rotate(1.2deg);
+}
+.tool-card:nth-child(4n+2) {
+  transform: rotate(-0.6deg);
+}
+.tool-card:nth-child(4n+3) {
+  transform: rotate(0.8deg);
+}
+
+/* Mock washi tape / pin pseudo-element */
+.tool-card::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 75px;
+  height: 22px;
+  background-color: rgba(20, 184, 166, 0.25); /* Muted Teal Tape */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border-left: 1px dashed rgba(0, 0, 0, 0.1);
+  border-right: 1px dashed rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  transition: opacity 0.25s ease;
+}
+
+/* Alternating tape color angles */
+.tool-card:nth-child(even)::before {
+  background-color: rgba(245, 158, 11, 0.25); /* Amber Tape */
+  transform: translateX(-50%) rotate(2deg);
+}
+
+/* Hover behaviors */
+.tool-card:hover {
+  transform: rotate(0deg) translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25), 0 8px 15px rgba(0, 0, 0, 0.15);
+  z-index: 20;
+}
+
+.tool-card:focus-within {
+  outline: 3px solid var(--teal);
+  outline-offset: 4px;
+}
+
+/* Card Content Details */
+.card-header {
+  margin-bottom: 0.75rem;
+}
+
+.card-title-link {
+  color: var(--card-text);
+  text-decoration: none;
+}
+
+.card-title-link:hover {
+  text-decoration: underline;
+}
+
+.card-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.card-meta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--card-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card-description {
+  font-size: 0.925rem;
+  line-height: 1.5;
+  color: #3f424b;
+}
+
+.card-image-container {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  background-color: #e5e7eb;
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ebdacf;
+  color: #8c6e5e;
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* Tags and chips */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: auto;
+}
+
+.tag-chip {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--card-text-muted);
+  padding: 0.15rem 0.45rem;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Card Footer/Author info */
+.card-footer {
+  margin-top: 1.25rem;
+  border-top: 1px solid var(--card-border);
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.author-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--card-border);
+}
+
+.author-name {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--card-text);
+}
+
+.star-count {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--bg-navy);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Empty State / Friendly Prompt */
+.empty-state {
+  text-align: center;
+  padding: 6rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 2px dashed rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 3rem auto;
+}
+
+.empty-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.empty-desc {
+  color: #94a3b8;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Header & Footer Layout */
+.site-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background-color: var(--bg-navy);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-logo {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.site-logo span {
+  color: var(--amber);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  font-family: var(--font-mono);
+  color: #94a3b8;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+}
+
+.site-footer {
+  margin-top: auto;
+  padding: 3rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background-color: var(--bg-pegboard);
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.footer-text {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.footer-link {
+  color: var(--teal);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: var(--teal-hover);
+  text-decoration: underline;
+}
+
+/* prefers-reduced-motion adjustment */
+@media (prefers-reduced-motion: reduce) {
+  .tool-card {
+    transition: none;
+  }
+  .tool-card:hover {
+    transform: none;
+  }
+  .btn-primary, .btn-secondary {
+    transition: none;
+    transform: none !important;
+  }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 640px) {
+  .site-header {
+    padding: 1rem;
+  }
+  .header-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .pegboard-hero {
+    padding: 3rem 1rem;
+    text-align: center;
+  }
+  .hero-title {
+    font-size: 2.25rem !important;
+  }
+  .hero-subtitle {
+    font-size: 1rem !important;
+  }
+  .tool-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1rem 1rem 4rem 1rem;
+  }
+  .tool-card {
+    min-height: auto;
+    transform: none !important;
+  }
+}

@@ -1,0 +1,53 @@
+name: 🛠️ Submit a Tool
+description: Submit your tiny open-source tool to the Tool Shed
+title: "Submission: [Tool Name]"
+labels: ["tool-submission", "pending"]
+body:
+  - type: input
+    id: tool-name
+    attributes:
+      label: Tool Name
+      placeholder: e.g., JSON Beautifier
+      description: The name of your tool
+    validations:
+      required: true
+  - type: input
+    id: repo-url
+    attributes:
+      label: GitHub Repo URL
+      placeholder: e.g., https://github.com/username/repo
+      description: Link to the tool's public GitHub repository
+    validations:
+      required: true
+  - type: input
+    id: description
+    attributes:
+      label: One-line Description
+      placeholder: e.g., A fast and lightweight JSON formatter in the browser.
+      description: Keep it short and sweet (under 100 characters)
+    validations:
+      required: true
+  - type: input
+    id: tags
+    attributes:
+      label: Tags
+      placeholder: e.g., dev-tools, games, productivity
+      description: Comma-separated list of tags
+    validations:
+      required: true
+  - type: input
+    id: language
+    attributes:
+      label: Primary Language
+      placeholder: e.g., TypeScript, Go, Rust, Python
+      description: Main programming language of the tool
+    validations:
+      required: true
+  - type: input
+    id: screenshot
+    attributes:
+      label: Screenshot/GIF URL
+      placeholder: e.g., https://example.com/screenshot.png
+      description: Optional link to a screenshot or demo GIF of the tool (raw image URLs work best)
+    validations:
+      required: false
