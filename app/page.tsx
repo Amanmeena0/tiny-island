@@ -34,7 +34,7 @@ function getTools(): Tool[] {
 
 export default function Home() {
   const tools = getTools();
-  const repoFullName = process.env.GITHUB_REPOSITORY || 'username/repo';
+  const repoFullName = process.env.GITHUB_REPOSITORY || 'Amanmeena0/tiny-island';
   const issueFormUrl = `https://github.com/${repoFullName}/issues/new?template=tool-submission.yml`;
   const repoUrl = `https://github.com/${repoFullName}`;
 

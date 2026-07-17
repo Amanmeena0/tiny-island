@@ -54,7 +54,7 @@ To run and test the sync script locally:
 
    ```bash
    PERSONAL_ACCESS_TOKEN="your_personal_access_token" \
-   GITHUB_REPOSITORY="username/repository_name" \
+   GITHUB_REPOSITORY="Amanmeena0/tiny-island" \
    node scripts/sync-tools.mjs
    ```
 
