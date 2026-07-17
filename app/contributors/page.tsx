@@ -13,6 +13,7 @@ interface Tool {
   issueNumber: number;
   name: string;
   repoUrl: string;
+  deployUrl?: string;
   repoOwner: string;
   repoName: string;
   description: string;
@@ -32,6 +33,7 @@ interface ProjectContributor {
   projects: {
     name: string;
     repoUrl: string;
+    deployUrl?: string;
     description: string;
     stars: number;
   }[];
@@ -94,6 +96,7 @@ export default function ContributorsPage() {
       projectContributorsMap[author].projects.push({
         name: tool.name,
         repoUrl: tool.repoUrl,
+        deployUrl: tool.deployUrl,
         description: tool.description,
         stars: tool.stars,
       });
@@ -216,12 +219,12 @@ export default function ContributorsPage() {
                       {c.projects.map((p, idx) => (
                         <li key={idx} className="contributor-project-item">
                           <a 
-                            href={p.repoUrl} 
+                            href={p.deployUrl || p.repoUrl} 
                             target="_blank" 
                             rel="noopener noreferrer" 
                             className="contributor-project-link"
                           >
-                            📁 {p.name}
+                            🚀 {p.name}
                           </a>
                           <span className="contributor-project-stars" title={`${p.stars} stars`}>
                             ★ {p.stars}
