@@ -26,6 +26,7 @@ interface ToolGridProps {
 
 export default function ToolGrid({ initialTools, issueFormUrl }: ToolGridProps) {
   const [activeTab, setActiveTab] = useState<'all' | 'tools' | 'games'>('all');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const gameKeywords = ['game', 'games', 'play', 'toy', 'puzzle', 'tictactoe', 'tic-tac-toe', 'hangman', 'wordle', 'arcade'];
 
@@ -36,15 +37,74 @@ export default function ToolGrid({ initialTools, issueFormUrl }: ToolGridProps) 
   };
 
   const filteredTools = initialTools.filter(tool => {
-    if (activeTab === 'all') return true;
+    // 1. Tab filter
     const toolIsGame = isGame(tool);
-    if (activeTab === 'games') return toolIsGame;
-    if (activeTab === 'tools') return !toolIsGame;
+    if (activeTab === 'games' && !toolIsGame) return false;
+    if (activeTab === 'tools' && toolIsGame) return false;
+
+    // 2. Search query filter
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase();
+      const nameMatch = tool.name.toLowerCase().includes(query);
+      const descMatch = tool.description.toLowerCase().includes(query);
+      const authorMatch = tool.author.toLowerCase().includes(query);
+      const langMatch = tool.language.toLowerCase().includes(query);
+      const tagsMatch = tool.tags.some(tag => tag.toLowerCase().includes(query));
+
+      return nameMatch || descMatch || authorMatch || langMatch || tagsMatch;
+    }
+
     return true;
   });
 
   return (
     <div className="container">
+      {/* Search Bar */}
+      <div className="search-container">
+        <svg 
+          className="search-icon"
+          width="18" 
+          height="18" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          strokeWidth="2.5" 
+          strokeLinecap="round" 
+          strokeLinejoin="round"
+        >
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input
+          type="text"
+          className="search-input"
+          placeholder="Search projects by name, language, tag, or author..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        {searchQuery && (
+          <button 
+            className="search-clear" 
+            onClick={() => setSearchQuery('')}
+            title="Clear search"
+          >
+            <svg 
+              width="18" 
+              height="18" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2.5" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        )}
+      </div>
+
       {/* Category Tabs */}
       <div className="filter-tabs">
         <button 
