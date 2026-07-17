@@ -28,11 +28,11 @@ const games = [
     lang: 'Python'
   },
   {
-    name: 'Wordle Bot',
-    url: 'https://github.com/ChaiWala-bihari/wordle',
-    desc: 'A 5-letter word guessing game played against a referee bot inside GitHub Issues.',
-    tags: 'games, python, wordle, bot',
-    lang: 'Python'
+    name: 'Wordle Game',
+    url: 'https://github.com/ChaiWala-bihari/ui-wordle',
+    desc: 'A production-quality Wordle game clone featuring synth audio, animations, stats, multiple themes, and a smart hint system built with Next.js.',
+    tags: 'games, nextjs, react, typescript, wordle',
+    lang: 'TypeScript'
   },
   {
     name: 'Chess Bot',

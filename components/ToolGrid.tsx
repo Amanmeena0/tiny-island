@@ -7,6 +7,7 @@ interface Tool {
   issueNumber: number;
   name: string;
   repoUrl: string;
+  deployUrl?: string;
   repoOwner: string;
   repoName: string;
   description: string;
