@@ -33,11 +33,18 @@ const games = [
     desc: 'A 5-letter word guessing game played against a referee bot inside GitHub Issues.',
     tags: 'games, python, wordle, bot',
     lang: 'Python'
+  },
+  {
+    name: 'Chess Bot',
+    url: 'https://github.com/ChaiWala-bihari/chess',
+    desc: 'A complete Chess game engine supporting standard algebraic notation moves inside GitHub Issues.',
+    tags: 'games, python, chess, bot',
+    lang: 'Python'
   }
 ];
 
 async function submitGames() {
-  console.log(`🚀 Starting submission of 3 games to ${toolShedRepo}...`);
+  console.log(`🚀 Starting submission of 4 games to ${toolShedRepo}...`);
 
   for (const game of games) {
     const body = `### Tool Name
