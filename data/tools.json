@@ -4,7 +4,7 @@
     "issueNumber": 1,
     "name": "Hangman",
     "repoUrl": "https://github.com/ChaiWala-bihari/hangman",
-    "deployUrl": "https://github.com/ChaiWala-bihari/hangman/issues",
+    "deployUrl": "https://ui-hangman.vercel.app/",
     "repoOwner": "ChaiWala-bihari",
     "repoName": "hangman",
     "description": "A retro-styled Hangman game engine played entirely inside GitHub Issues.",
