@@ -1,7 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
-import ToolGrid from '../components/ToolGrid';
+import type { Metadata } from 'next';
+import ToolGrid from '../../components/ToolGrid';
+
+export const metadata: Metadata = {
+  title: "Pegboard — Tool Shed 🛠️",
+  description: "Browse, filter, and search tiny, free, open-source games and tools.",
+};
 
 interface Tool {
   id: number;
@@ -34,7 +40,7 @@ function getTools(): Tool[] {
   return [];
 }
 
-export default function Home() {
+export default function PegboardPage() {
   const tools = getTools();
   const repoFullName = process.env.GITHUB_REPOSITORY || 'Amanmeena0/tiny-island';
   const issueFormUrl = `https://github.com/${repoFullName}/issues/new?template=tool-submission.yml`;
@@ -65,28 +71,19 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="pegboard-hero">
+      <section className="pegboard-hero" style={{ padding: '3.5rem 1.5rem 2.5rem 1.5rem' }}>
         <div className="container" style={{ textAlign: 'center', maxWidth: '800px' }}>
-          <h1 className="serif-title hero-title" style={{ fontSize: '3rem', marginBottom: '1.25rem', color: '#ffffff', lineHeight: 1.2 }}>
-            A Pegboard of Tiny, Wonderful Things
+          <h1 className="serif-title hero-title" style={{ fontSize: '2.5rem', marginBottom: '1rem', color: '#ffffff', lineHeight: 1.2 }}>
+            The Workshop Pegboard
           </h1>
-          <p className="hero-subtitle" style={{ fontSize: '1.15rem', color: '#cbd5e1', marginBottom: '2.5rem', lineHeight: 1.6 }}>
-            Welcome to the <strong>Tool Shed</strong>—a workshop directory showcasing tiny, free, and open-source games & tools. 
-            No logins, no ads, no trackers. Hosted entirely on GitHub, approved by human maintainers, and built straight from GitHub Issues.
+          <p className="hero-subtitle" style={{ fontSize: '1.05rem', color: '#cbd5e1', marginBottom: '0', lineHeight: 1.6 }}>
+            Explore tiny, developer-built tools, CLI engines, and minimal retro games. Use the search and category tabs below to filter the board.
           </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-            <a href={issueFormUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">
-              Submit Your Project
-            </a>
-            <a href={repoUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary">
-              View Source Repo
-            </a>
-          </div>
         </div>
       </section>
 
-      {/* Main Pegboard Section */}
-      <main id="pegboard" style={{ flexGrow: 1, padding: '2rem 0' }}>
+      {/* Main Pegboard Grid Section */}
+      <main style={{ flexGrow: 1, padding: '3rem 0' }}>
         <ToolGrid initialTools={tools} issueFormUrl={issueFormUrl} />
       </main>
 
