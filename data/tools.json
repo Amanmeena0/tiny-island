@@ -2,7 +2,7 @@
   {
     "id": 1,
     "issueNumber": 1,
-    "name": "Hangman Bot",
+    "name": "Hangman",
     "repoUrl": "https://github.com/ChaiWala-bihari/hangman",
     "deployUrl": "https://github.com/ChaiWala-bihari/hangman/issues",
     "repoOwner": "ChaiWala-bihari",
@@ -36,7 +36,7 @@
   {
     "id": 3,
     "issueNumber": 3,
-    "name": "Wordle Game",
+    "name": "Wordle",
     "repoUrl": "https://github.com/ChaiWala-bihari/ui-wordle",
     "deployUrl": "https://ui-wordle.vercel.app",
     "repoOwner": "ChaiWala-bihari",
@@ -53,7 +53,7 @@
   {
     "id": 4,
     "issueNumber": 4,
-    "name": "Chess Bot",
+    "name": "Chess",
     "repoUrl": "https://github.com/ChaiWala-bihari/chess",
     "deployUrl": "https://github.com/ChaiWala-bihari/chess/issues",
     "repoOwner": "ChaiWala-bihari",
