@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -51,6 +51,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
+
+      - name: Commit and Push Updated Tools Data
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/tools.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: sync tools data [skip ci]"
+            git push origin HEAD:main
+          else
+            echo "No changes in tools.json to commit"
+          fi
 
       - name: Build Next.js
         run: npm run build
