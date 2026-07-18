@@ -56,6 +56,7 @@ async function sync() {
       const name = parsed['tool name'] || issue.title.replace(/^Submission:\s*/i, '').replace(/^\[Tool\]\s*/i, '');
       const repoUrl = parsed['github repository url'] || parsed['github repo url'] || '';
       const deployUrl = parsed['website or demo url (optional)'] || '';
+      const category = parsed['project type'] ? parsed['project type'].trim().toLowerCase() : '';
       const description = parsed['one-line description'] || '';
       const tagsRaw = parsed['tags (comma-separated)'] || parsed['tags'] || '';
       const tags = tagsRaw.split(',').map(t => t.trim()).filter(Boolean);
@@ -114,6 +115,10 @@ async function sync() {
 
       if (deployUrl) {
         toolObject.deployUrl = deployUrl;
+      }
+
+      if (category) {
+        toolObject.category = category;
       }
 
       tools.push(toolObject);

@@ -28,6 +28,16 @@ body:
       placeholder: e.g., Tiny Windows toast notification CLI (229 KB)
     validations:
       required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Project Type
+      description: Is this submission a Tool or a Game?
+      options:
+        - Tool
+        - Game
+    validations:
+      required: true
   - type: textarea
     id: about
     attributes:

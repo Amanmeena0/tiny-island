@@ -24,6 +24,7 @@ interface Tool {
   author: string;
   authorAvatar: string;
   createdAt: string;
+  category?: string;
 }
 
 interface ProjectContributor {

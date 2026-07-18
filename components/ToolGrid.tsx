@@ -18,6 +18,7 @@ interface Tool {
   author: string;
   authorAvatar: string;
   createdAt: string;
+  category?: string;
 }
 
 interface ToolGridProps {
@@ -32,6 +33,9 @@ export default function ToolGrid({ initialTools, issueFormUrl }: ToolGridProps) 
   const gameKeywords = ['game', 'games', 'play', 'toy', 'puzzle', 'tictactoe', 'tic-tac-toe', 'hangman', 'wordle', 'arcade'];
 
   const isGame = (tool: Tool) => {
+    if (tool.category === 'game') return true;
+    if (tool.category === 'tool') return false;
+
     const hasGameTag = tool.tags.some(tag => gameKeywords.includes(tag.toLowerCase()));
     const hasGameName = gameKeywords.some(keyword => tool.name.toLowerCase().includes(keyword));
     return hasGameTag || hasGameName;

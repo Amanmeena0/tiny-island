@@ -19,6 +19,7 @@ interface Tool {
   author: string;
   authorAvatar: string;
   createdAt: string;
+  category?: string;
 }
 
 function getTools(): Tool[] {
