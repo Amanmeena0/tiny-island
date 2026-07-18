@@ -48,7 +48,7 @@ function parseIssueBody(body) {
 async function validate() {
   console.log(`Starting validation for issue #${issueNumber}...`);
   const parsed = parseIssueBody(issueBody);
-  const repoUrl = parsed['github repo url'] || '';
+  const repoUrl = parsed['github repository url'] || parsed['github repo url'] || '';
 
   if (!repoUrl) {
     await failValidation('⚠️ The "GitHub Repo URL" field was left empty or is missing.');

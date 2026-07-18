@@ -1,53 +1,124 @@
-name: 🛠️ Submit a Tool
-description: Submit your tiny open-source tool to the Tool Shed
-title: "Submission: [Tool Name]"
+name: 🏠 Submit a Tiny Tool
+description: Welcome to Tiny Tool Town! Fill out this form and we'll review your tool. Once approved, it'll show up on the site automatically!
+title: "[Tool] "
 labels: ["tool-submission", "pending"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Welcome to Tiny Tool Town! 🏘️
+        Fill out this form and we'll review your tool. Once approved, it'll show up on the site automatically!
+
+        Your GitHub username also creates your author page automatically:
+        https://www.tinytooltown.com/authors/YOUR-GITHUB-USERNAME/
+
+        After your tool is accepted, you can use the Claim or Customize an Author Page issue form if you want to remove the unclaimed notice and add a bio, links, or featured groups of your tools.
   - type: input
     id: tool-name
     attributes:
       label: Tool Name
-      placeholder: e.g., JSON Beautifier
-      description: The name of your tool
-    validations:
-      required: true
-  - type: input
-    id: repo-url
-    attributes:
-      label: GitHub Repo URL
-      placeholder: e.g., https://github.com/username/repo
-      description: Link to the tool's public GitHub repository
+      placeholder: e.g., Toasty
     validations:
       required: true
   - type: input
     id: description
     attributes:
-      label: One-line Description
-      placeholder: e.g., A fast and lightweight JSON formatter in the browser.
-      description: Keep it short and sweet (under 100 characters)
+      label: One-line description
+      description: Keep it short and fun — this shows on the card.
+      placeholder: e.g., Tiny Windows toast notification CLI (229 KB)
+    validations:
+      required: true
+  - type: textarea
+    id: about
+    attributes:
+      label: Tell us about your tool
+      description: A few sentences about what it does, why you built it, and why it's delightful.
+      placeholder: What does it do? Why did you build it? Why is it delightful?
+    validations:
+      required: true
+  - type: input
+    id: repo-url
+    attributes:
+      label: GitHub Repository URL
+      placeholder: https://github.com/you/your-tool
+    validations:
+      required: true
+  - type: input
+    id: site-url
+    attributes:
+      label: Website or Demo URL (optional)
+      placeholder: https://your-tool.com
+    validations:
+      required: false
+  - type: input
+    id: thumbnail-url
+    attributes:
+      label: Thumbnail image URL (optional)
+      description: A direct URL to a screenshot or product image you want shown on your tool's page. PNG / JPG / WebP / GIF, ideally at least 960x540. Leave blank to let us auto-pick the best image from your README.
+      placeholder: https://raw.githubusercontent.com/you/your-tool/main/docs/screenshot.png
+    validations:
+      required: false
+  - type: input
+    id: developer-name
+    attributes:
+      label: Your Name
+      description: Enter one name, or multiple names separated by commas in the same order as GitHub usernames below.
+      placeholder: e.g., Jane Developer, John Builder
+    validations:
+      required: true
+  - type: input
+    id: developer-github
+    attributes:
+      label: Your GitHub Username
+      description: Enter one username, or multiple usernames separated by commas to match the names above.
+      placeholder: e.g., janedev, johnbuilder
     validations:
       required: true
   - type: input
     id: tags
     attributes:
-      label: Tags
-      placeholder: e.g., dev-tools, games, productivity
-      description: Comma-separated list of tags
+      label: Tags (comma-separated)
+      description: Free-form tags to help people find your tool.
+      placeholder: cli, windows, fun, tiny
     validations:
       required: true
   - type: input
     id: language
     attributes:
-      label: Primary Language
-      placeholder: e.g., TypeScript, Go, Rust, Python
-      description: Main programming language of the tool
-    validations:
-      required: true
-  - type: input
-    id: screenshot
-    attributes:
-      label: Screenshot/GIF URL
-      placeholder: e.g., https://example.com/screenshot.png
-      description: Optional link to a screenshot or demo GIF of the tool (raw image URLs work best)
+      label: Primary Programming Language
+      placeholder: e.g., Python, Rust, C#, JavaScript
     validations:
       required: false
+  - type: input
+    id: license
+    attributes:
+      label: License
+      placeholder: e.g., MIT, Apache-2.0, GPL-3.0
+    validations:
+      required: false
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Page Theme (optional)
+      description: Choose a custom color theme for your tool's page. Preview them at tinytooltown.com!
+      options:
+        - Default
+        - Dark
+        - Light
+        - Retro
+        - Neon
+        - Ocean
+        - Forest
+    validations:
+      required: false
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: This tool is free and open source
+          required: true
+        - label: This tool is not enterprise software or paid SaaS
+          required: true
+        - label: The GitHub repo is public and the tool works
+          required: true

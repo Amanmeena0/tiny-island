@@ -53,13 +53,15 @@ async function sync() {
     for (const issue of issues) {
       const parsed = parseIssueBody(issue.body);
       
-      const name = parsed['tool name'] || issue.title.replace(/^Submission:\s*/i, '');
-      const repoUrl = parsed['github repo url'] || '';
+      const name = parsed['tool name'] || issue.title.replace(/^Submission:\s*/i, '').replace(/^\[Tool\]\s*/i, '');
+      const repoUrl = parsed['github repository url'] || parsed['github repo url'] || '';
+      const deployUrl = parsed['website or demo url (optional)'] || '';
       const description = parsed['one-line description'] || '';
-      const tagsRaw = parsed['tags'] || '';
+      const tagsRaw = parsed['tags (comma-separated)'] || parsed['tags'] || '';
       const tags = tagsRaw.split(',').map(t => t.trim()).filter(Boolean);
-      const language = parsed['primary language'] || 'Unknown';
-      const screenshot = parsed['screenshot/gif url'] || '';
+      const language = parsed['primary programming language'] || parsed['primary language'] || 'Unknown';
+      const screenshotRaw = parsed['thumbnail image url (optional)'] || parsed['screenshot/gif url'] || '';
+      const screenshot = convertDriveUrl(screenshotRaw);
 
       if (!repoUrl) {
         console.warn(`⚠️ Issue #${issue.number} has no repo URL. Skipping.`);
@@ -93,7 +95,7 @@ async function sync() {
         // Keep going even if star count fetch fails
       }
 
-      tools.push({
+      const toolObject = {
         id: issue.id,
         issueNumber: issue.number,
         name,
@@ -108,7 +110,13 @@ async function sync() {
         author: issue.user?.login || 'anonymous',
         authorAvatar: avatarUrl,
         createdAt: issue.created_at,
-      });
+      };
+
+      if (deployUrl) {
+        toolObject.deployUrl = deployUrl;
+      }
+
+      tools.push(toolObject);
     }
 
     fs.writeFileSync(filePath, JSON.stringify(tools, null, 2));
@@ -117,6 +125,26 @@ async function sync() {
     console.error(`❌ Sync failed: ${error.message}`);
     process.exit(1);
   }
+}
+
+function convertDriveUrl(url) {
+  if (!url) return '';
+  
+  // Match drive.google.com/file/d/FILE_ID/...
+  const fileDMatch = url.match(/drive\.google\.com\/file\/d\/([^/]+)/i);
+  if (fileDMatch) {
+    const fileId = fileDMatch[1];
+    return `https://docs.google.com/uc?export=download&id=${fileId}`;
+  }
+
+  // Match drive.google.com/open?id=FILE_ID
+  const openMatch = url.match(/drive\.google\.com\/open\?id=([^&]+)/i);
+  if (openMatch) {
+    const fileId = openMatch[1];
+    return `https://docs.google.com/uc?export=download&id=${fileId}`;
+  }
+
+  return url;
 }
 
 function parseIssueBody(body) {
