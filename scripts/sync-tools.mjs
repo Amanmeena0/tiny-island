@@ -73,7 +73,7 @@ async function sync() {
       }
 
       const repoOwner = repoMatch[1];
-      const repoName = repoMatch[2].replace(/\.git$/i, '').trim();
+      const repoName = repoMatch[2].split(/[?#]/)[0].replace(/\.git$/i, '').trim();
 
       let stars = 0;
       let avatarUrl = issue.user?.avatar_url || '';
