@@ -62,7 +62,7 @@ async function validate() {
   }
 
   const repoOwner = repoMatch[1];
-  const repoName = repoMatch[2].replace(/\.git$/i, '').trim();
+  const repoName = repoMatch[2].split(/[?#]/)[0].replace(/\.git$/i, '').trim();
 
   try {
     console.log(`Checking if public repo ${repoOwner}/${repoName} exists...`);
