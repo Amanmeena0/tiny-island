@@ -1,5 +1,25 @@
 [
   {
+    "id": 4922283241,
+    "issueNumber": 17,
+    "name": "Hangman",
+    "repoUrl": "https://github.com/JisDatta043/ui-hangman",
+    "repoOwner": "JisDatta043",
+    "repoName": "ui-hangman",
+    "description": "A modern, minimal, and responsive Hangman game.",
+    "tags": [
+      "tool-submission"
+    ],
+    "language": "Typescript",
+    "screenshot": "https://docs.google.com/uc?export=download&id=19UZ5Vw5j2SSKqLrkm5UdzdAtXO8fx-3f",
+    "stars": 0,
+    "author": "JisDatta043",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/305153826?v=4",
+    "createdAt": "2026-07-19T10:20:08Z",
+    "deployUrl": "https://ui-hangman.vercel.app",
+    "category": "game"
+  },
+  {
     "id": 4922249702,
     "issueNumber": 15,
     "name": "NeoChess",
@@ -13,7 +33,7 @@
     "language": "Typescript",
     "screenshot": "https://docs.google.com/uc?export=download&id=11PFOEe6FJBdKbj5664echxYr4bFC-mEI",
     "stars": 0,
-    "author": "ChaiWala-bihari",
+    "author": "JisDatta043",
     "authorAvatar": "https://avatars.githubusercontent.com/u/305153826?v=4",
     "createdAt": "2026-07-19T10:08:06Z",
     "deployUrl": "https://chess-game-psi-two.vercel.app",
