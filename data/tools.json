@@ -20,6 +20,26 @@
     "category": "game"
   },
   {
+    "id": 4922274136,
+    "issueNumber": 16,
+    "name": "Tic Tac Toe",
+    "repoUrl": "https://github.com/JisDatta043/ui-tic-tac-toe",
+    "repoOwner": "JisDatta043",
+    "repoName": "ui-tic-tac-toe",
+    "description": "A highly polished, production-quality, and fully accessible Tic-Tac-Toe game.",
+    "tags": [
+      "tool-submission"
+    ],
+    "language": "Typescript",
+    "screenshot": "https://docs.google.com/uc?export=download&id=1Y6O8uWTdlNzdZdiJapz9HRgz2vSMgCpg",
+    "stars": 0,
+    "author": "JisDatta043",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/305153826?v=4",
+    "createdAt": "2026-07-19T10:16:48Z",
+    "deployUrl": "https://ui-tic-tac-toe.vercel.app",
+    "category": "game"
+  },
+  {
     "id": 4922249702,
     "issueNumber": 15,
     "name": "NeoChess",
