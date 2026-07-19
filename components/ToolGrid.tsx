@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
+import GoogleDriveMedia from './GoogleDriveMedia';
 
 interface Tool {
   id: number;
@@ -141,14 +143,12 @@ export default function ToolGrid({ initialTools, issueFormUrl }: ToolGridProps) 
               <article key={tool.id} className="tool-card">
                 <div className="card-header">
                   <h3 className="card-title">
-                    <a 
-                      href={tool.deployUrl || tool.repoUrl} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    <Link 
+                      href={`/issues/${tool.issueNumber}`} 
                       className="card-title-link"
                     >
                       {tool.name}
-                    </a>
+                    </Link>
                   </h3>
                   <div className="card-meta">
                     <span className="mono-text">{tool.language}</span>
@@ -158,30 +158,15 @@ export default function ToolGrid({ initialTools, issueFormUrl }: ToolGridProps) 
                 </div>
 
                 <div className="card-body">
-                  {/* Screenshot or Fallback Initial Letter */}
-                  <div className="card-image-container">
-                    {tool.screenshot ? (
-                      /* eslint-disable-next-line @next/next/no-img-element */
-                      <img 
-                        src={tool.screenshot} 
-                        alt={`${tool.name} preview`} 
-                        className="card-image"
-                        loading="lazy"
-                        onError={(e) => {
-                          // Hide image and show placeholder if url fails to load
-                          (e.target as HTMLElement).style.display = 'none';
-                          const sibling = (e.target as HTMLElement).nextElementSibling;
-                          if (sibling) (sibling as HTMLElement).style.display = 'flex';
-                        }}
-                      />
-                    ) : null}
-                    <div 
-                      className="card-image-placeholder"
-                      style={{ display: tool.screenshot ? 'none' : 'flex' }}
-                    >
-                      {firstLetter}
-                    </div>
-                  </div>
+                  {/* Media rendering with Google Drive and video autoplay support */}
+                  <Link href={`/issues/${tool.issueNumber}`} style={{ textDecoration: 'none', display: 'block' }}>
+                    <GoogleDriveMedia
+                      src={tool.screenshot}
+                      alt={`${tool.name} preview`}
+                      variant="card"
+                      fallbackChar={firstLetter}
+                    />
+                  </Link>
 
                   <p className="card-description">{tool.description}</p>
 

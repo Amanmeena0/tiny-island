@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: process.cwd(),
   },
+  env: {
+    NEXT_PUBLIC_GITHUB_REPOSITORY: process.env.GITHUB_REPOSITORY || 'Amanmeena0/tiny-island',
+  },
 };
 
 export default nextConfig;
