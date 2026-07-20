@@ -1,5 +1,25 @@
 [
   {
+    "id": 4922290594,
+    "issueNumber": 18,
+    "name": "Wordle",
+    "repoUrl": "https://github.com/JisDatta043/ui-wordle",
+    "repoOwner": "JisDatta043",
+    "repoName": "ui-wordle",
+    "description": "A high-performance, accessible, and responsive clone of the popular Wordle game.",
+    "tags": [
+      "tool-submission"
+    ],
+    "language": "TypeScript",
+    "screenshot": "https://docs.google.com/uc?export=download&id=1AGPYNkyFROm9rbxflub34oXUokFKxJis",
+    "stars": 0,
+    "author": "JisDatta043",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/305153826?v=4",
+    "createdAt": "2026-07-19T10:22:51Z",
+    "deployUrl": "https://ui-wordle.vercel.app",
+    "category": "game"
+  },
+  {
     "id": 4922283241,
     "issueNumber": 17,
     "name": "Hangman",
