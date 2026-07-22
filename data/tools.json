@@ -1,5 +1,25 @@
 [
   {
+    "id": 4945184612,
+    "issueNumber": 19,
+    "name": "Stickman Game",
+    "repoUrl": "https://github.com/JisDatta043/stickman-battle",
+    "repoOwner": "JisDatta043",
+    "repoName": "stickman-battle",
+    "description": "Stickman Battle is a fast-paced PvP multiplayer game where you can battle your friends or other players online. Create a private room, invite your friends with a room code, and compete in exciting stickman fights.",
+    "tags": [
+      "tool-submission"
+    ],
+    "language": "Typescript",
+    "screenshot": "https://docs.google.com/uc?export=download&id=1FWkW-h2cdecHsEx1r4-55UqbqVEw6jIO",
+    "stars": 0,
+    "author": "JisDatta043",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/305153826?v=4",
+    "createdAt": "2026-07-22T03:37:33Z",
+    "deployUrl": "https://stickman-battle-ten.vercel.app/",
+    "category": "game"
+  },
+  {
     "id": 4922290594,
     "issueNumber": 18,
     "name": "Wordle",
