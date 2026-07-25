@@ -265,129 +265,181 @@ export default function IssueDetailsClient({ id }: IssueDetailsClientProps) {
           ← Back to Pegboard
         </Link>
 
-        {/* Media rendered ABOVE the description */}
-        {mediaUrl ? (
-          <GoogleDriveMedia
-            src={mediaUrl}
-            alt={`${title} Preview Media`}
-            variant="detail"
-            className="detail-media-wrapper"
-          />
-        ) : null}
+        <div className="issue-details-layout">
+          {/* Main Column */}
+          <div className="issue-main-content">
+            {/* Header */}
+            <header className="issue-header">
+              <div className="issue-title-row">
+                <h1 className="issue-title">
+                  {title} <span className="issue-number">#{issueNumber}</span>
+                </h1>
+                <span className={`status-badge ${status}`}>
+                  {status}
+                </span>
+              </div>
+            </header>
 
-        {/* Issue Header */}
-        <header className="issue-header">
-          <div className="issue-title-row">
-            <h1 className="issue-title">
-              {title} <span className="issue-number">#{issueNumber}</span>
-            </h1>
-            <span className={`status-badge ${status}`}>
-              {status}
-            </span>
-          </div>
+            {/* Media rendered ABOVE the description */}
+            {mediaUrl ? (
+              <GoogleDriveMedia
+                src={mediaUrl}
+                alt={`${title} Preview Media`}
+                variant="detail"
+                className="detail-media-wrapper"
+              />
+            ) : null}
 
-          <div className="issue-meta-row">
-            <span>Submitted by:</span>
-            <a href={authorUrl} target="_blank" rel="noopener noreferrer" className="issue-author-link">
-              {authorAvatar && (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img src={authorAvatar} alt={authorName} className="issue-author-avatar" />
+            {/* Description Body Card */}
+            <article className="issue-body-card">
+              {/* If GitHub API call is rate-limited, show a small warning tag */}
+              {error && (
+                <div style={{ padding: '0.75rem 1rem', backgroundColor: '#fef3c7', borderLeft: '4px solid #d97706', color: '#92400e', fontSize: '0.85rem', marginBottom: '1.5rem', borderRadius: '2px' }}>
+                  <strong>Note:</strong> Displaying archived offline description. Comments are unavailable.
+                </div>
               )}
-              @{authorName}
-            </a>
-            <span>•</span>
-            <span>Created on: {createdDate}</span>
-            <span>•</span>
-            <a 
-              href={githubIssueUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="mono-text"
-              style={{ color: 'var(--teal)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
-            >
-              View on GitHub
-            </a>
-            {deployUrl && (
-              <>
-                <span>•</span>
-                <a 
-                  href={deployUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="mono-text"
-                  style={{ color: 'var(--amber)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontWeight: 600 }}
-                >
-                  🚀 Visit Website / Demo
-                </a>
-              </>
+              <Markdown content={description} />
+            </article>
+
+            {/* Comments Section */}
+            {!error && (
+              <section className="comments-section" style={{ marginTop: '3rem' }}>
+                <h2 className="comments-section-title">
+                  Comments ({comments.length})
+                </h2>
+
+                {comments.length > 0 ? (
+                  <div className="comments-list">
+                    {comments.map((comment) => (
+                      <div key={comment.id} className="comment-card">
+                        <div className="comment-header">
+                          <a href={comment.user.html_url} target="_blank" rel="noopener noreferrer" className="comment-author">
+                            {comment.user?.avatar_url ? (
+                              /* eslint-disable-next-line @next/next/no-img-element */
+                              <img src={comment.user.avatar_url} alt={comment.user.login} className="issue-author-avatar" />
+                            ) : null}
+                            @{comment.user.login}
+                          </a>
+                          <span className="mono-text" style={{ fontSize: '0.75rem' }}>
+                            {new Date(comment.created_at).toLocaleDateString()}
+                          </span>
+                        </div>
+                        <div className="comment-body">
+                          <Markdown content={comment.body} />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div style={{ textAlign: 'center', padding: '3rem 1.5rem', border: '1px dashed rgba(255, 255, 255, 0.1)', borderRadius: '4px', color: '#64748b' }}>
+                    <p className="mono-text">No comments on this submission yet.</p>
+                    <a 
+                      href={githubIssueUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="btn-secondary" 
+                      style={{ marginTop: '1rem', fontSize: '0.8rem', padding: '0.5rem 1rem' }}
+                    >
+                      Join the Discussion
+                    </a>
+                  </div>
+                )}
+              </section>
             )}
           </div>
 
-          {labels.length > 0 && (
-            <div className="issue-labels">
-              {labels.map((label, idx) => (
-                <span key={idx} className="issue-label-chip">
-                  {label.toLowerCase()}
-                </span>
-              ))}
-            </div>
-          )}
-        </header>
+          {/* Sidebar Column */}
+          <aside className="issue-sidebar">
+            <div className="issue-sidebar-card">
+              {/* Actions Section */}
+              <div className="sidebar-section">
+                <h3 className="sidebar-title">Project Actions</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                  {deployUrl && (
+                    <a 
+                      href={deployUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="btn-primary"
+                      style={{ justifyContent: 'center', width: '100%', textDecoration: 'none' }}
+                    >
+                      🚀 Visit Website / Demo
+                    </a>
+                  )}
+                  <a 
+                    href={githubIssueUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn-secondary"
+                    style={{ justifyContent: 'center', width: '100%', textDecoration: 'none' }}
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                    </svg>
+                    View Issue on GitHub
+                  </a>
+                </div>
+              </div>
 
-        {/* Description Body Card */}
-        <article className="issue-body-card">
-          {/* If GitHub API call is rate-limited, show a small warning tag */}
-          {error && (
-            <div style={{ padding: '0.75rem 1rem', backgroundColor: '#fef3c7', borderLeft: '4px solid #d97706', color: '#92400e', fontSize: '0.85rem', marginBottom: '1.5rem', borderRadius: '2px' }}>
-              <strong>Note:</strong> Displaying archived offline description. Comments are unavailable.
-            </div>
-          )}
-          <Markdown content={description} />
-        </article>
-
-        {/* Comments Section */}
-        {!error && (
-          <section className="comments-section" style={{ marginTop: '4rem' }}>
-            <h2 className="comments-section-title">
-              Comments ({comments.length})
-            </h2>
-
-            {comments.length > 0 ? (
-              <div className="comments-list">
-                {comments.map((comment) => (
-                  <div key={comment.id} className="comment-card">
-                    <div className="comment-header">
-                      <a href={comment.user.html_url} target="_blank" rel="noopener noreferrer" className="comment-author">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={comment.user.avatar_url} alt={comment.user.login} className="issue-author-avatar" />
-                        @{comment.user.login}
-                      </a>
-                      <span className="mono-text" style={{ fontSize: '0.75rem' }}>
-                        {new Date(comment.created_at).toLocaleDateString()}
+              {/* Information Section */}
+              <div className="sidebar-section">
+                <h3 className="sidebar-title">Information</h3>
+                <div className="sidebar-meta-list">
+                  <div className="sidebar-meta-item">
+                    <span className="meta-label">Submitted by</span>
+                    <a href={authorUrl} target="_blank" rel="noopener noreferrer" className="issue-author-link">
+                      {authorAvatar && (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img src={authorAvatar} alt={authorName} className="issue-author-avatar" />
+                      )}
+                      @{authorName}
+                    </a>
+                  </div>
+                  <div className="sidebar-meta-item">
+                    <span className="meta-label">Issue #</span>
+                    <span className="meta-value mono-text">#{issueNumber}</span>
+                  </div>
+                  <div className="sidebar-meta-item">
+                    <span className="meta-label">Created date</span>
+                    <span className="meta-value">{createdDate}</span>
+                  </div>
+                  <div className="sidebar-meta-item">
+                    <span className="meta-label">Status</span>
+                    <span className={`status-badge ${status}`}>{status}</span>
+                  </div>
+                  {localTool?.language && (
+                    <div className="sidebar-meta-item">
+                      <span className="meta-label">Language</span>
+                      <span className="meta-value mono-text">{localTool.language}</span>
+                    </div>
+                  )}
+                  {localTool?.stars !== undefined && (
+                    <div className="sidebar-meta-item">
+                      <span className="meta-label">GitHub Stars</span>
+                      <span className="meta-value mono-text" style={{ color: 'var(--amber)', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                        ★ {localTool.stars.toLocaleString()}
                       </span>
                     </div>
-                    <div className="comment-body">
-                      <Markdown content={comment.body} />
-                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Tags Section */}
+              {labels.length > 0 && (
+                <div className="sidebar-section">
+                  <h3 className="sidebar-title">Tags & Categories</h3>
+                  <div className="issue-labels">
+                    {labels.map((label, idx) => (
+                      <span key={idx} className="issue-label-chip">
+                        {label.toLowerCase()}
+                      </span>
+                    ))}
                   </div>
-                ))}
-              </div>
-            ) : (
-              <div style={{ textAlign: 'center', padding: '3rem 1.5rem', border: '1px dashed rgba(255, 255, 255, 0.1)', borderRadius: '4px', color: '#64748b' }}>
-                <p className="mono-text">No comments on this submission yet.</p>
-                <a 
-                  href={githubIssueUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="btn-secondary" 
-                  style={{ marginTop: '1rem', fontSize: '0.8rem', padding: '0.5rem 1rem' }}
-                >
-                  Join the Discussion
-                </a>
-              </div>
-            )}
-          </section>
-        )}
+                </div>
+              )}
+            </div>
+          </aside>
+        </div>
       </main>
 
       {/* Site Footer */}
