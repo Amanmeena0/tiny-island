@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import GoogleDriveMedia from './GoogleDriveMedia';
 
 interface Tool {
@@ -29,6 +30,7 @@ interface ToolGridProps {
 }
 
 export default function ToolGrid({ initialTools, issueFormUrl }: ToolGridProps) {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<'all' | 'tools' | 'games'>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -140,7 +142,18 @@ export default function ToolGrid({ initialTools, issueFormUrl }: ToolGridProps) 
           {filteredTools.map((tool) => {
             const firstLetter = tool.name.charAt(0).toUpperCase();
             return (
-              <article key={tool.id} className="tool-card">
+              <article 
+                key={tool.id} 
+                className="tool-card"
+                onClick={(e) => {
+                  const target = e.target as HTMLElement;
+                  if (target.closest('a') || target.closest('button')) {
+                    return;
+                  }
+                  router.push(`/issues/${tool.issueNumber}`);
+                }}
+                style={{ cursor: 'pointer' }}
+              >
                 <div className="card-header">
                   <h3 className="card-title">
                     <Link 
@@ -187,12 +200,14 @@ export default function ToolGrid({ initialTools, issueFormUrl }: ToolGridProps) 
                     className="author-info"
                     style={{ textDecoration: 'none' }}
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img 
-                      src={tool.authorAvatar} 
-                      alt={tool.author} 
-                      className="author-avatar" 
-                    />
+                    {tool.authorAvatar ? (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img 
+                        src={tool.authorAvatar} 
+                        alt={tool.author} 
+                        className="author-avatar" 
+                      />
+                    ) : null}
                     <span className="author-name">@{tool.author}</span>
                   </a>
 

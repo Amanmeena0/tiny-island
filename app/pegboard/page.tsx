@@ -73,7 +73,7 @@ export default function PegboardPage() {
 
       {/* Hero Section */}
       <section className="pegboard-hero" style={{ padding: '3.5rem 1.5rem 2.5rem 1.5rem' }}>
-        <div className="container" style={{ textAlign: 'center', maxWidth: '800px' }}>
+        <div className="container" style={{ textAlign: 'center', maxWidth: '1000px' }}>
           <h1 className="serif-title hero-title" style={{ fontSize: '2.5rem', marginBottom: '1rem', color: '#ffffff', lineHeight: 1.2 }}>
             The Workshop Pegboard
           </h1>

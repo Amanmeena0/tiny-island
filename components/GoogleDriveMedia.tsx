@@ -46,51 +46,50 @@ export default function GoogleDriveMedia({
   className = '',
   fallbackChar = '?',
 }: GoogleDriveMediaProps) {
-  const [mediaUrl, setMediaUrl] = useState('');
-  const [embedUrl, setEmbedUrl] = useState('');
-  const [fileId, setFileId] = useState('');
-  const [isDrive, setIsDrive] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [detectedType, setDetectedType] = useState<'image' | 'video' | 'iframe' | 'error'>('image');
+  const parsed = parseGoogleDriveUrl(src);
+  const initialMediaUrl = parsed.isDrive ? parsed.directUrl : src;
+
+  const [mediaUrl, setMediaUrl] = useState(initialMediaUrl);
+  const [embedUrl, setEmbedUrl] = useState(parsed.embedUrl);
+  const [fileId, setFileId] = useState(parsed.fileId);
+  const [isDrive, setIsDrive] = useState(parsed.isDrive);
+  const [loading, setLoading] = useState(Boolean(initialMediaUrl));
+  const [detectedType, setDetectedType] = useState<'image' | 'video' | 'iframe' | 'error'>(
+    initialMediaUrl ? 'image' : 'error'
+  );
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     let isMounted = true;
 
     if (!src) {
-      queueMicrotask(() => {
-        if (isMounted) {
-          setLoading(false);
-          setDetectedType('error');
-        }
-      });
+      setLoading(false);
+      setDetectedType('error');
+      setMediaUrl('');
       return;
     }
 
-    const parsed = parseGoogleDriveUrl(src);
-    const targetUrl = parsed.isDrive ? parsed.directUrl : src;
+    const currentParsed = parseGoogleDriveUrl(src);
+    const targetUrl = currentParsed.isDrive ? currentParsed.directUrl : src;
 
-    queueMicrotask(() => {
-      if (!isMounted) return;
-      setLoading(true);
-      setMediaUrl(targetUrl);
-      setEmbedUrl(parsed.embedUrl);
-      setFileId(parsed.fileId);
-      setIsDrive(parsed.isDrive);
+    setLoading(true);
+    setMediaUrl(targetUrl);
+    setEmbedUrl(currentParsed.embedUrl);
+    setFileId(currentParsed.fileId);
+    setIsDrive(currentParsed.isDrive);
 
-      // 1. Detect by extension first
-      const cleanUrl = targetUrl.split('?')[0].split('#')[0];
-      if (/\.(mp4|webm|ogg|mov|m4v)$/i.test(cleanUrl)) {
-        setDetectedType('video');
-        setLoading(false);
-        return;
-      }
-      if (/\.(png|jpe?g|gif|webp|svg|bmp)$/i.test(cleanUrl)) {
-        setDetectedType('image');
-        setLoading(false);
-        return;
-      }
-    });
+    // 1. Detect by extension first
+    const cleanUrl = targetUrl.split('?')[0].split('#')[0];
+    if (/\.(mp4|webm|ogg|mov|m4v)$/i.test(cleanUrl)) {
+      setDetectedType('video');
+      setLoading(false);
+      return;
+    }
+    if (/\.(png|jpe?g|gif|webp|svg|bmp)$/i.test(cleanUrl)) {
+      setDetectedType('image');
+      setLoading(false);
+      return;
+    }
 
     // 2. Proactively probe content-type via fetch if extension is unknown (e.g. Google Drive URLs)
     const probeMediaType = async () => {
@@ -172,7 +171,7 @@ export default function GoogleDriveMedia({
     }
   };
 
-  if (detectedType === 'error') {
+  if (detectedType === 'error' || !mediaUrl) {
     return (
       <div className={`media-container ${variant === 'card' ? 'card-media-wrapper' : 'detail-media-wrapper'} ${className}`}>
         <div className={`media-fallback ${variant === 'detail' ? 'media-fallback-dark' : ''}`}>
@@ -196,7 +195,7 @@ export default function GoogleDriveMedia({
         </div>
       )}
 
-      {detectedType === 'image' && (
+      {detectedType === 'image' && mediaUrl ? (
         /* eslint-disable-next-line @next/next/no-img-element */
         <img
           src={mediaUrl}
@@ -205,9 +204,9 @@ export default function GoogleDriveMedia({
           onError={handleImageError}
           style={{ opacity: loading ? 0 : 1, transition: 'opacity 0.2s ease' }}
         />
-      )}
+      ) : null}
 
-      {detectedType === 'video' && (
+      {detectedType === 'video' && mediaUrl ? (
         <video
           ref={videoRef}
           src={mediaUrl}
@@ -219,9 +218,9 @@ export default function GoogleDriveMedia({
           onError={handleVideoError}
           style={{ opacity: loading ? 0 : 1, transition: 'opacity 0.2s ease' }}
         />
-      )}
+      ) : null}
 
-      {detectedType === 'iframe' && (
+      {detectedType === 'iframe' && embedUrl ? (
         <iframe
           src={embedUrl}
           width="100%"
@@ -231,7 +230,7 @@ export default function GoogleDriveMedia({
           allow="autoplay; encrypted-media"
           allowFullScreen
         />
-      )}
+      ) : null}
     </div>
   );
 }

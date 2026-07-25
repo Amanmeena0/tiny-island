@@ -136,7 +136,7 @@ export default function ContributorsPage() {
 
       {/* Hero Section */}
       <section className="contributors-hero">
-        <div className="container" style={{ textAlign: 'center', maxWidth: '800px' }}>
+        <div className="container" style={{ textAlign: 'center', maxWidth: '1000px' }}>
           <h1 className="serif-title hero-title" style={{ fontSize: '3rem', marginBottom: '1.25rem', color: '#ffffff', lineHeight: 1.2 }}>
             The Artisans &amp; Builders
           </h1>
@@ -157,12 +157,14 @@ export default function ContributorsPage() {
               {codeContributors.map((c) => (
                 <article key={c.username} className="contributor-card core-contributor">
                   <div className="contributor-avatar-container">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img 
-                      src={c.avatarUrl} 
-                      alt={c.name} 
-                      className="contributor-avatar" 
-                    />
+                    {c.avatarUrl ? (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img 
+                        src={c.avatarUrl} 
+                        alt={c.name} 
+                        className="contributor-avatar" 
+                      />
+                    ) : null}
                   </div>
                   <h3 className="contributor-name">{c.name}</h3>
                   <a 
@@ -192,12 +194,14 @@ export default function ContributorsPage() {
                 {projectContributors.map((c) => (
                   <article key={c.username} className="contributor-card">
                     <div className="contributor-avatar-container">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img 
-                        src={c.avatarUrl} 
-                        alt={c.username} 
-                        className="contributor-avatar" 
-                      />
+                      {c.avatarUrl ? (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img 
+                          src={c.avatarUrl} 
+                          alt={c.username} 
+                          className="contributor-avatar" 
+                        />
+                      ) : null}
                     </div>
                     <h3 className="contributor-name" style={{ fontSize: '1.2rem' }}>@{c.username}</h3>
                     <a 

@@ -205,7 +205,9 @@ function parseInline(text: string): React.ReactNode[] {
     // Image: ![alt](url)
     const imgMatch = currentText.match(/^!\[(.*?)\]\((.*?)\)/);
     if (imgMatch) {
-      tokens.push(<img key={key++} src={imgMatch[2]} alt={imgMatch[1]} className="md-img" />);
+      if (imgMatch[2] && imgMatch[2].trim()) {
+        tokens.push(<img key={key++} src={imgMatch[2]} alt={imgMatch[1]} className="md-img" />);
+      }
       currentText = currentText.slice(imgMatch[0].length);
       continue;
     }

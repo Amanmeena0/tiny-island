@@ -67,7 +67,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="pegboard-hero">
-        <div className="container" style={{ textAlign: 'center', maxWidth: '800px' }}>
+        <div className="container" style={{ textAlign: 'center', maxWidth: '1000px' }}>
           <h1 className="serif-title hero-title" style={{ fontSize: '3rem', marginBottom: '1.25rem', color: '#ffffff', lineHeight: 1.2 }}>
             A Pegboard of Tiny, Wonderful Things
           </h1>
