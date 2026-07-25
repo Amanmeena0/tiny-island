@@ -27,8 +27,6 @@ export default function Markdown({ content }: MarkdownProps) {
     const key = blockKey++;
 
     if (currentBlockType === 'code') {
-      // Find code language if any
-      const langMatch = currentBlockLines[0].match(/^```(\w*)/);
       const code = currentBlockLines.slice(1).join('\n');
       blocks.push(
         <pre key={key} className="md-code-block">

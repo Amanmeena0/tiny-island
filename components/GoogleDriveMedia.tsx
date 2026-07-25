@@ -55,35 +55,44 @@ export default function GoogleDriveMedia({
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
+    let isMounted = true;
+
     if (!src) {
-      setLoading(false);
-      setDetectedType('error');
+      queueMicrotask(() => {
+        if (isMounted) {
+          setLoading(false);
+          setDetectedType('error');
+        }
+      });
       return;
     }
 
-    setLoading(true);
     const parsed = parseGoogleDriveUrl(src);
     const targetUrl = parsed.isDrive ? parsed.directUrl : src;
-    setMediaUrl(targetUrl);
-    setEmbedUrl(parsed.embedUrl);
-    setFileId(parsed.fileId);
-    setIsDrive(parsed.isDrive);
 
-    // 1. Detect by extension first
-    const cleanUrl = targetUrl.split('?')[0].split('#')[0];
-    if (/\.(mp4|webm|ogg|mov|m4v)$/i.test(cleanUrl)) {
-      setDetectedType('video');
-      setLoading(false);
-      return;
-    }
-    if (/\.(png|jpe?g|gif|webp|svg|bmp)$/i.test(cleanUrl)) {
-      setDetectedType('image');
-      setLoading(false);
-      return;
-    }
+    queueMicrotask(() => {
+      if (!isMounted) return;
+      setLoading(true);
+      setMediaUrl(targetUrl);
+      setEmbedUrl(parsed.embedUrl);
+      setFileId(parsed.fileId);
+      setIsDrive(parsed.isDrive);
+
+      // 1. Detect by extension first
+      const cleanUrl = targetUrl.split('?')[0].split('#')[0];
+      if (/\.(mp4|webm|ogg|mov|m4v)$/i.test(cleanUrl)) {
+        setDetectedType('video');
+        setLoading(false);
+        return;
+      }
+      if (/\.(png|jpe?g|gif|webp|svg|bmp)$/i.test(cleanUrl)) {
+        setDetectedType('image');
+        setLoading(false);
+        return;
+      }
+    });
 
     // 2. Proactively probe content-type via fetch if extension is unknown (e.g. Google Drive URLs)
-    let isMounted = true;
     const probeMediaType = async () => {
       try {
         const response = await fetch(targetUrl, { method: 'GET' });

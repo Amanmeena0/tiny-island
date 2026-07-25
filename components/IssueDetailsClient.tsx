@@ -158,9 +158,9 @@ export default function IssueDetailsClient({ id }: IssueDetailsClientProps) {
           const commentsData: GitHubComment[] = await commentsRes.json();
           setComments(commentsData);
         }
-      } catch (err: any) {
+      } catch (err: unknown) {
         console.error('Error fetching issue details:', err);
-        setError(err.message || 'An error occurred.');
+        setError(err instanceof Error ? err.message : 'An error occurred.');
       } finally {
         setLoading(false);
       }
