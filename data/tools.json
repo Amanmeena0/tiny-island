@@ -1,5 +1,25 @@
 [
   {
+    "id": 4975186392,
+    "issueNumber": 20,
+    "name": "Promodo App",
+    "repoUrl": "https://github.com/ananaymeena3/Promodo-clock",
+    "repoOwner": "ananaymeena3",
+    "repoName": "Promodo-clock",
+    "description": "Designed with aesthetics inspired by MacOS, Notion, and Arc Browser — featuring glassmorphism, glowing accents, dark/light theme presets, synthesized ambient soundscapes, drag-and-drop Kanban boards, full productivity analytics, habit tracking, Notion-style docs, and an AI Productivity Coach.",
+    "tags": [
+      "tool-submission"
+    ],
+    "language": "TypeScript",
+    "screenshot": "https://docs.google.com/uc?export=download&id=180iNyI3qEAdsHh7A2QbQSabQZckC_Hty",
+    "stars": 0,
+    "author": "ananaymeena3",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/285141453?v=4",
+    "createdAt": "2026-07-25T09:24:32Z",
+    "deployUrl": "https://promodo-clock.vercel.app/",
+    "category": "tool"
+  },
+  {
     "id": 4945184612,
     "issueNumber": 19,
     "name": "Stickman Game",
