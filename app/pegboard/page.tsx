@@ -77,9 +77,6 @@ export default function PegboardPage() {
           <h1 className="serif-title hero-title" style={{ fontSize: '2.5rem', marginBottom: '1rem', color: '#ffffff', lineHeight: 1.2 }}>
             The Workshop Pegboard
           </h1>
-          <p className="hero-subtitle" style={{ fontSize: '1.05rem', color: '#cbd5e1', marginBottom: '0', lineHeight: 1.6 }}>
-            Explore tiny, developer-built tools, CLI engines, and minimal retro games. Use the search and category tabs below to filter the board.
-          </p>
         </div>
       </section>
 

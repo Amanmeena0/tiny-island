@@ -134,18 +134,6 @@ export default function ContributorsPage() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="contributors-hero">
-        <div className="container" style={{ textAlign: 'center', maxWidth: '1000px' }}>
-          <h1 className="serif-title hero-title" style={{ fontSize: '3rem', marginBottom: '1.25rem', color: '#ffffff', lineHeight: 1.2 }}>
-            The Artisans &amp; Builders
-          </h1>
-          <p className="hero-subtitle" style={{ fontSize: '1.15rem', color: '#cbd5e1', marginBottom: '1.5rem', lineHeight: 1.6 }}>
-            Meet the developers shaping the <strong>Tool Shed</strong>. Whether they contributed code to the dashboard or submitted a tiny project to the pegboard, they built this workshop.
-          </p>
-        </div>
-      </section>
-
       {/* Main Content Area */}
       <main className="contributors-section">
         <div className="container">
