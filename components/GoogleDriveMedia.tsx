@@ -62,37 +62,33 @@ export default function GoogleDriveMedia({
   useEffect(() => {
     let isMounted = true;
 
-    if (!src) {
-      setLoading(false);
-      setDetectedType('error');
-      setMediaUrl('');
-      return;
-    }
+    if (!src) return;
 
-    const currentParsed = parseGoogleDriveUrl(src);
-    const targetUrl = currentParsed.isDrive ? currentParsed.directUrl : src;
-
-    setLoading(true);
-    setMediaUrl(targetUrl);
-    setEmbedUrl(currentParsed.embedUrl);
-    setFileId(currentParsed.fileId);
-    setIsDrive(currentParsed.isDrive);
-
-    // 1. Detect by extension first
-    const cleanUrl = targetUrl.split('?')[0].split('#')[0];
-    if (/\.(mp4|webm|ogg|mov|m4v)$/i.test(cleanUrl)) {
-      setDetectedType('video');
-      setLoading(false);
-      return;
-    }
-    if (/\.(png|jpe?g|gif|webp|svg|bmp)$/i.test(cleanUrl)) {
-      setDetectedType('image');
-      setLoading(false);
-      return;
-    }
-
-    // 2. Proactively probe content-type via fetch if extension is unknown (e.g. Google Drive URLs)
     const probeMediaType = async () => {
+      const currentParsed = parseGoogleDriveUrl(src);
+      const targetUrl = currentParsed.isDrive ? currentParsed.directUrl : src;
+
+      if (!isMounted) return;
+
+      setLoading(true);
+      setMediaUrl(targetUrl);
+      setEmbedUrl(currentParsed.embedUrl);
+      setFileId(currentParsed.fileId);
+      setIsDrive(currentParsed.isDrive);
+
+      // 1. Detect by extension first
+      const cleanUrl = targetUrl.split('?')[0].split('#')[0];
+      if (/\.(mp4|webm|ogg|mov|m4v)$/i.test(cleanUrl)) {
+        setDetectedType('video');
+        setLoading(false);
+        return;
+      }
+      if (/\.(png|jpe?g|gif|webp|svg|bmp)$/i.test(cleanUrl)) {
+        setDetectedType('image');
+        setLoading(false);
+        return;
+      }
+
       try {
         const response = await fetch(targetUrl, { method: 'GET' });
         const contentType = response.headers.get('content-type');

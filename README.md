@@ -1,6 +1,22 @@
-# 🛠️ Tool Shed
+# 🛠️ Tool Shed (Tiny-island)
 
 Welcome to the **Tool Shed** (Tiny-island)—a custom "workshop pegboard" catalog of tiny, free, open-source games and tools. This project runs entirely on GitHub: issue templates serve as the submission form, approved issue comments act as the database, and GitHub Actions triggers static builds deployed directly to GitHub Pages.
+
+---
+
+## 🌟 Welcome New Open Source Contributors!
+
+This project is built specifically as a welcoming home for **new open-source contributors** to make their first contribution! 
+
+Whether you want to showcase your own open-source mini-game/tool or contribute directly to this codebase, we have step-by-step guides to help you:
+
+| Guide | Description |
+| :--- | :--- |
+| 🚀 **[First-Time Contributor Guide](docs/FIRST_TIME_CONTRIBUTOR_GUIDE.md)** | Absolute beginner's guide to open source, Git, and getting your first PR merged |
+| 🏠 **[Submit a Tool or Game Guide](docs/SUBMIT_TOOL_OR_GAME_GUIDE.md)** | Learn how to submit your project via GitHub Issues and get featured on the site |
+| 💻 **[Developer Code Contributor Guide](docs/CODE_CONTRIBUTOR_GUIDE.md)** | Guide for developers modifying Next.js UI, React components, or Node.js sync scripts |
+| ❓ **[Contributor FAQ](docs/FAQ.md)** | Answers to common questions about PRs, automated verification, and submissions |
+| 🤝 **[Code of Conduct](CODE_OF_CONDUCT.md)** | Our standards for a welcoming, inclusive, and harassment-free community |
 
 ---
 
