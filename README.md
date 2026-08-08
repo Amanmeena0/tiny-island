@@ -1,4 +1,4 @@
-# 🛠️ Tool Shed (Kojiima)
+# Kojima (Tool - Shed)
 
 Welcome to the **Tool Shed** (Kojiima)—a custom "workshop pegboard" catalog of tiny, free, open-source games and tools. This project runs entirely on GitHub: issue templates serve as the submission form, approved issue comments act as the database, and GitHub Actions triggers static builds deployed directly to GitHub Pages.
 
