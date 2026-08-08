@@ -1,4 +1,4 @@
-# Contributing to Tool Shed (Tiny-island)
+# Contributing to Tool Shed (Kojiima)
 
 Thank you for your interest in contributing to the **Tool Shed**! We love contributions of all kinds, especially from **first-time open-source contributors**. Whether you are submitting a new tiny project, improving the web interface, or writing documentation, we are happy to help you make your contribution!
 
@@ -90,8 +90,8 @@ To make changes to the codebase, configure your local environment as follows:
 
 ```bash
 # Clone the repository
-git clone https://github.com/Amanmeena0/tiny-island.git
-cd tiny-island
+git clone https://github.com/Amanmeena0/kojiima.git
+cd kojiima
 
 # Install dependencies
 npm install

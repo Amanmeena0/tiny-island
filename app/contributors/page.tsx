@@ -4,8 +4,8 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Contributors — Tool Shed 🛠️",
-  description: "Meet the makers, developer champions, and core contributors behind the Tool Shed.",
+  title: "Contributors — Kojiima 🛠️",
+  description: "Meet the makers, developer champions, and core contributors behind Kojiima.",
 };
 
 interface Tool {
@@ -105,7 +105,7 @@ export default function ContributorsPage() {
   });
 
   const projectContributors = Object.values(projectContributorsMap);
-  const repoFullName = process.env.GITHUB_REPOSITORY || 'Amanmeena0/tiny-island';
+  const repoFullName = process.env.GITHUB_REPOSITORY || 'Amanmeena0/kojiima';
   const repoUrl = `https://github.com/${repoFullName}`;
   const issueFormUrl = `https://github.com/${repoFullName}/issues/new?template=tool-submission.yml`;
   const contributingGuideUrl = `${repoUrl}/blob/main/CONTRIBUTING.md`;
@@ -116,7 +116,7 @@ export default function ContributorsPage() {
       <header className="site-header">
         <div className="container header-container">
           <Link href="/" className="site-logo">
-            🛠️ Tool<span>Shed</span>
+            🛠️ Koji<span>ima</span>
           </Link>
           <nav className="site-nav">
             <Link href="/pegboard" className="nav-link">PEGBOARD</Link>
@@ -259,7 +259,7 @@ export default function ContributorsPage() {
       <footer className="site-footer">
         <div className="container footer-container">
           <p className="footer-text">
-            🛠️ <strong>Tool Shed</strong> is an open-source catalog of solo-built tools and games.
+            🛠️ <strong>Kojiima</strong> is an open-source catalog of solo-built tools and games.
           </p>
           <p className="footer-text" style={{ fontSize: '0.8rem', marginTop: '0.25rem' }}>
             Powered by GitHub Issues as a backend. <a href={repoUrl} target="_blank" rel="noopener noreferrer" className="footer-link">Fork this project on GitHub</a>.

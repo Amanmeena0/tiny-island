@@ -111,8 +111,8 @@ export default function IssueDetailsClient({ id }: IssueDetailsClientProps) {
   // Local tool data to pre-populate / fallback
   const [localTool, setLocalTool] = useState<Tool | null>(null);
 
-  // Expose GITHUB_REPOSITORY from next.config env, fallback to Amanmeena0/tiny-island
-  const repoFullName = process.env.NEXT_PUBLIC_GITHUB_REPOSITORY || 'Amanmeena0/tiny-island';
+  // Expose GITHUB_REPOSITORY from next.config env, fallback to Amanmeena0/kojiima
+  const repoFullName = process.env.NEXT_PUBLIC_GITHUB_REPOSITORY || 'Amanmeena0/kojiima';
 
   useEffect(() => {
     // 1. Try to load local details from tools.json first for instant render and offline support
@@ -249,7 +249,7 @@ export default function IssueDetailsClient({ id }: IssueDetailsClientProps) {
       <header className="site-header">
         <div className="container header-container">
           <Link href="/" className="site-logo">
-            🛠️ Tool<span>Shed</span>
+            🛠️ Koji<span>ima</span>
           </Link>
           <nav className="site-nav">
             <Link href="/pegboard" className="nav-link">PEGBOARD</Link>
@@ -446,7 +446,7 @@ export default function IssueDetailsClient({ id }: IssueDetailsClientProps) {
       <footer className="site-footer">
         <div className="container footer-container">
           <p className="footer-text">
-            🛠️ <strong>Tool Shed</strong> is an open-source catalog of solo-built tools and games.
+            🛠️ <strong>Kojiima</strong> is an open-source catalog of solo-built tools and games.
           </p>
         </div>
       </footer>

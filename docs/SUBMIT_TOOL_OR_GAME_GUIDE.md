@@ -1,6 +1,6 @@
 # 🛠️ Guide: How to Submit a Tool or Game
 
-Submitting your tiny project, CLI tool, utility, or mini-game to **Tool Shed (Tiny-island)** is one of the easiest ways to get your first open-source contribution badge! 
+Submitting your tiny project, CLI tool, utility, or mini-game to **Tool Shed (Kojiima)** is one of the easiest ways to get your first open-source contribution badge! 
 
 Once submitted via a GitHub Issue, our automated bot validates your public GitHub repository, a maintainer approves it, and your project is automatically built and displayed on the live website pegboard.
 
@@ -21,7 +21,7 @@ Before submitting your tool or game, make sure it meets the following criteria:
 
 ### Step 1: Navigate to Issues
 Go to the **Tool Shed** repository on GitHub and click on the **Issues** tab:
-👉 [Open GitHub Issues](https://github.com/Amanmeena0/tiny-island/issues)
+👉 [Open GitHub Issues](https://github.com/Amanmeena0/kojiima/issues)
 
 ### Step 2: Click "New Issue"
 Click the green **New Issue** button in the top right corner.
@@ -86,7 +86,7 @@ graph TD
 
 AI agents and automated tools can also submit projects programmatically using the GitHub REST API:
 
-- **Endpoint**: `POST https://api.github.com/repos/Amanmeena0/tiny-island/issues`
+- **Endpoint**: `POST https://api.github.com/repos/Amanmeena0/kojiima/issues`
 - **Required Labels**: `["tool-submission", "pending"]`
 - **Body Markdown Structure**:
 
@@ -132,4 +132,4 @@ https://raw.githubusercontent.com/username/my-awesome-tool/main/screenshot.png
 ### 3. How do I update my tool info after it has been published?
 - Leave a comment on your original submission issue requesting an update, or open a PR if you wish to adjust metadata directly!
 
-Need more help? See our [FAQ Document](file:///Users/amanmeena/Documents/Work/Tiny/Tiny-island/docs/FAQ.md).
+Need more help? See our [FAQ Document](file:///Users/amanmeena/Documents/Work/kojima/kojima/docs/FAQ.md).

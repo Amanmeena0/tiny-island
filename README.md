@@ -1,6 +1,6 @@
-# 🛠️ Tool Shed (Tiny-island)
+# 🛠️ Tool Shed (Kojiima)
 
-Welcome to the **Tool Shed** (Tiny-island)—a custom "workshop pegboard" catalog of tiny, free, open-source games and tools. This project runs entirely on GitHub: issue templates serve as the submission form, approved issue comments act as the database, and GitHub Actions triggers static builds deployed directly to GitHub Pages.
+Welcome to the **Tool Shed** (Kojiima)—a custom "workshop pegboard" catalog of tiny, free, open-source games and tools. This project runs entirely on GitHub: issue templates serve as the submission form, approved issue comments act as the database, and GitHub Actions triggers static builds deployed directly to GitHub Pages.
 
 ---
 
@@ -29,10 +29,10 @@ Whether you want to showcase your own open-source mini-game/tool or contribute d
 
 ### Installation
 
-Navigate to the `Tiny-island` directory and install dependencies:
+Navigate to the `kojiima` directory and install dependencies:
 
 ```bash
-cd Tiny-island
+cd kojiima
 npm install
 ```
 
@@ -70,7 +70,7 @@ To run and test the sync script locally:
 
    ```bash
    PERSONAL_ACCESS_TOKEN="your_personal_access_token" \
-   GITHUB_REPOSITORY="Amanmeena0/tiny-island" \
+   GITHUB_REPOSITORY="Amanmeena0/kojiima" \
    node scripts/sync-tools.mjs
    ```
 

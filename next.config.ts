@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
     root: process.cwd(),
   },
   env: {
-    NEXT_PUBLIC_GITHUB_REPOSITORY: process.env.GITHUB_REPOSITORY || 'Amanmeena0/tiny-island',
+    NEXT_PUBLIC_GITHUB_REPOSITORY: process.env.GITHUB_REPOSITORY || 'Amanmeena0/kojiima',
   },
 };
 

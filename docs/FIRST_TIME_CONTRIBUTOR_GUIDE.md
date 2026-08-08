@@ -1,6 +1,6 @@
 # 🌟 First-Time Contributor Guide
 
-Welcome to **Tool Shed (Tiny-island)**! We are thrilled to have you here. 
+Welcome to **Tool Shed (Kojiima)**! We are thrilled to have you here. 
 
 This project is specially designed to be a safe, welcoming, and friendly space for **new open-source contributors** making their very first contribution to open source. Whether you are learning Git for the first time, building your first project, or wanting to get your name on an open-source contributor list, you are in the right place!
 
@@ -13,15 +13,15 @@ You can contribute to Tool Shed in **two different ways**:
 ### Method 1: Submit Your Own Tiny Tool or Game (Easiest & Most Fun!)
 Have you built a small tool, script, CLI app, or mini-game in your own GitHub repository? 
 - You don't need to touch the code of this repository!
-- All you need to do is [open a Tool Submission Issue](https://github.com/Amanmeena0/tiny-island/issues/new?template=tool-submission.yml).
+- All you need to do is [open a Tool Submission Issue](https://github.com/Amanmeena0/kojiima/issues/new?template=tool-submission.yml).
 - Our automated bot will check your repository, a maintainer will approve it, and your project will automatically appear on the live website pegboard!
-- 📖 **Read the full step-by-step guide**: [How to Submit a Tool or Game](file:///Users/amanmeena/Documents/Work/Tiny/Tiny-island/docs/SUBMIT_TOOL_OR_GAME_GUIDE.md)
+- 📖 **Read the full step-by-step guide**: [How to Submit a Tool or Game](file:///Users/amanmeena/Documents/Work/kojima/kojima/docs/SUBMIT_TOOL_OR_GAME_GUIDE.md)
 
 ### Method 2: Contribute Code, UI, or Docs to Tool Shed
 Want to practice traditional Git workflows (forking, cloning, branching, opening a PR)?
 - You can help us improve this website!
 - Improve the design/UI, fix bugs, write documentation, or enhance automated scripts.
-- 📖 **Read the developer guide**: [Code Contributor Guide](file:///Users/amanmeena/Documents/Work/Tiny/Tiny-island/docs/CODE_CONTRIBUTOR_GUIDE.md)
+- 📖 **Read the developer guide**: [Code Contributor Guide](file:///Users/amanmeena/Documents/Work/kojima/kojima/docs/CODE_CONTRIBUTOR_GUIDE.md)
 
 ---
 
@@ -31,14 +31,14 @@ If you decide to contribute code or docs directly to Tool Shed, follow this begi
 
 ### Step 1: Fork this Repository
 1. Look at the top-right corner of this GitHub page and click the **Fork** button.
-2. Select your GitHub account. This creates a copy of `tiny-island` under your own account (e.g. `https://github.com/your-username/tiny-island`).
+2. Select your GitHub account. This creates a copy of `kojiima` under your own account (e.g. `https://github.com/your-username/kojiima`).
 
 ### Step 2: Clone Your Fork to Your Computer
 Open your terminal (or command prompt / Git Bash) and run:
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/tiny-island.git
-cd tiny-island
+git clone https://github.com/YOUR-USERNAME/kojiima.git
+cd kojiima
 ```
 
 *(Replace `YOUR-USERNAME` with your actual GitHub username).*
@@ -84,7 +84,7 @@ git push -u origin feature/my-first-contribution
 ```
 
 ### Step 7: Open a Pull Request (PR)
-1. Go to your repository on GitHub (`https://github.com/YOUR-USERNAME/tiny-island`).
+1. Go to your repository on GitHub (`https://github.com/YOUR-USERNAME/kojiima`).
 2. You will see a banner saying **"Compare & pull request"**. Click it!
 3. Fill out the PR template explaining what changes you made.
 4. Click **Create Pull Request**.
@@ -116,7 +116,7 @@ git push -u origin feature/my-first-contribution
 
 ## ❓ Frequently Asked Questions & Getting Help
 
-- Need help or stuck on a step? Check our [Frequently Asked Questions (FAQ)](file:///Users/amanmeena/Documents/Work/Tiny/Tiny-island/docs/FAQ.md).
-- Please ensure you follow our [Code of Conduct](file:///Users/amanmeena/Documents/Work/Tiny/Tiny-island/CODE_OF_CONDUCT.md) when interacting with maintainers and fellow contributors.
+- Need help or stuck on a step? Check our [Frequently Asked Questions (FAQ)](file:///Users/amanmeena/Documents/Work/kojima/kojima/docs/FAQ.md).
+- Please ensure you follow our [Code of Conduct](file:///Users/amanmeena/Documents/Work/kojima/kojima/CODE_OF_CONDUCT.md) when interacting with maintainers and fellow contributors.
 
 Welcome to the open-source community! Happy contributing! 🚀

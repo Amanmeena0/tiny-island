@@ -37,7 +37,7 @@ function getTools(): Tool[] {
 
 export default function Home() {
   const tools = getTools();
-  const repoFullName = process.env.GITHUB_REPOSITORY || 'Amanmeena0/tiny-island';
+  const repoFullName = process.env.GITHUB_REPOSITORY || 'Amanmeena0/kojiima';
   const issueFormUrl = `https://github.com/${repoFullName}/issues/new?template=tool-submission.yml`;
   const repoUrl = `https://github.com/${repoFullName}`;
 
@@ -47,7 +47,7 @@ export default function Home() {
       <header className="site-header">
         <div className="container header-container">
           <Link href="/" className="site-logo">
-            🛠️ Tool<span>Shed</span>
+            🛠️ Koji<span>ima</span>
           </Link>
           <nav className="site-nav">
             <Link href="/pegboard" className="nav-link">PEGBOARD</Link>
@@ -109,7 +109,7 @@ export default function Home() {
       <footer className="site-footer">
         <div className="container footer-container">
           <p className="footer-text">
-            🛠️ <strong>Tool Shed</strong> is an open-source catalog of solo-built tools and games.
+            🛠️ <strong>Kojiima</strong> is an open-source catalog of solo-built tools and games.
           </p>
           <p className="footer-text" style={{ fontSize: '0.8rem', marginTop: '0.25rem' }}>
             Powered by GitHub Issues as a backend. <a href={repoUrl} target="_blank" rel="noopener noreferrer" className="footer-link">Fork this project on GitHub</a>.

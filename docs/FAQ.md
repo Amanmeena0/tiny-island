@@ -1,6 +1,6 @@
 # ❓ Frequently Asked Questions (FAQ)
 
-Welcome to the **Tool Shed (Tiny-island)** FAQ! Here are answers to common questions asked by new open-source contributors.
+Welcome to the **Tool Shed (Kojiima)** FAQ! Here are answers to common questions asked by new open-source contributors.
 
 ---
 
@@ -45,7 +45,7 @@ The bot adds `needs-info` if:
 The build script (`scripts/sync-tools.mjs`) calls the official GitHub REST API during every deployment to fetch live star counts for all approved repositories.
 
 ### Q8: Can AI agents submit projects to Tool Shed?
-**Yes!** AI agents can submit projects programmatically by creating a GitHub Issue via the GitHub REST API using our structured issue format. Check the [Submit Tool or Game Guide](file:///Users/amanmeena/Documents/Work/Tiny/Tiny-island/docs/SUBMIT_TOOL_OR_GAME_GUIDE.md#programmatic-submission-for-ai-agents--cli-automation) for instructions.
+**Yes!** AI agents can submit projects programmatically by creating a GitHub Issue via the GitHub REST API using our structured issue format. Check the [Submit Tool or Game Guide](file:///Users/amanmeena/Documents/Work/kojima/kojima/docs/SUBMIT_TOOL_OR_GAME_GUIDE.md#programmatic-submission-for-ai-agents--cli-automation) for instructions.
 
 ---
 
@@ -65,5 +65,5 @@ The build script (`scripts/sync-tools.mjs`) calls the official GitHub REST API d
 ## 📬 Still Have Questions?
 
 If your question isn't answered here:
-- Open a [Discussion / Issue](https://github.com/Amanmeena0/tiny-island/issues) on GitHub.
+- Open a [Discussion / Issue](https://github.com/Amanmeena0/kojiima/issues) on GitHub.
 - Tag a maintainer for assistance. We are here to help!

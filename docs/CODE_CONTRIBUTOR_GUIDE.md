@@ -1,6 +1,6 @@
 # 💻 Developer & Code Contributor Guide
 
-Thank you for wanting to contribute code, UI design, performance optimizations, or script fixes to **Tool Shed (Tiny-island)**! This document provides everything you need to know about setting up your development environment, codebase architecture, testing pipelines, and submitting clean Pull Requests.
+Thank you for wanting to contribute code, UI design, performance optimizations, or script fixes to **Tool Shed (Kojiima)**! This document provides everything you need to know about setting up your development environment, codebase architecture, testing pipelines, and submitting clean Pull Requests.
 
 ---
 
@@ -18,8 +18,8 @@ Before you start, make sure you have the following installed on your system:
 
 1. **Fork and clone the repository**:
    ```bash
-   git clone https://github.com/YOUR-USERNAME/tiny-island.git
-   cd tiny-island
+   git clone https://github.com/YOUR-USERNAME/kojiima.git
+   cd kojiima
    ```
 
 2. **Install project dependencies**:
@@ -40,7 +40,7 @@ Before you start, make sure you have the following installed on your system:
 Here is a breakdown of the core directories and how the application works:
 
 ```
-tiny-island/
+kojiima/
 ├── app/                      # Next.js App Router
 │   ├── layout.tsx            # Global HTML layout & meta tags
 │   ├── page.tsx              # Homepage (renders ToolGrid & hero)
@@ -75,7 +75,7 @@ To run the sync script locally against the repository:
 2. Execute the script in your terminal:
    ```bash
    PERSONAL_ACCESS_TOKEN="your_personal_access_token" \
-   GITHUB_REPOSITORY="Amanmeena0/tiny-island" \
+   GITHUB_REPOSITORY="Amanmeena0/kojiima" \
    node scripts/sync-tools.mjs
    ```
 3. Inspect `data/tools.json` to verify that tools were fetched, stars were calculated, and the JSON output is properly formatted.
